@@ -8,10 +8,10 @@ const lowOrHi = document.querySelector('.lowOrHi');
 
 const guessSubmit = document.querySelector('.guessSubmit');
 const guessField = document.querySelector('.guessField');
-const resetButton = document.querySelector('.resetButton');
+const startButton = document.querySelector('.startButton');
 
 let guessCount = 1;
-resetButton.style.display = "none";
+startButton.style.display = "none";
 
 function checkGuess() {
   let userGuess = Number(guessField.value);
@@ -48,13 +48,12 @@ function checkGuess() {
 function setGameOver() {
   guessField.disabled = true;
   guessSubmit.disabled = true;
-  resetButton.style.display = null;
-  resetButton.addEventListener('click', resetGame);
+  startButton.style.display = null;
+  startButton.addEventListener('click', resetGame);
 }
 
 function resetGame() {
   guessCount = 1;
-  resetButton.style.display = "none";
 
   const resetParas = document.querySelectorAll('.resultParas p');
   for (let i = 0 ; i < resetParas.length ; i++) {
@@ -68,6 +67,7 @@ function resetGame() {
   guessField.focus();
 
   lastResult.style.backgroundColor = 'white';
+  startButton.style.display = "none";
 
   randomNumber = Math.floor(Math.random() * 100) + 1;
 }
